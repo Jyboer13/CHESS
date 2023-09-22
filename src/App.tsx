@@ -1,10 +1,8 @@
-import React, { useMemo } from "react";
 import Logo from "./assets/logo.svg";
 import { ReactComponent as Logo2 } from "./assets/logo.svg";
-
-// {
-//   "presets": ["@babel/preset-env", "@babel/preset-typescript"]
-// }
+import Button from "@mui/material/Button";
+import { IconButton } from "@mui/material";
+import AddRoadIcon from "@mui/icons-material/AddRoad";
 
 export const App = () => {
   console.log("CHESS IS HERE, MOTHERFUCKER!");
@@ -15,6 +13,10 @@ export const App = () => {
         <Logo2 />
       </div>
       <img src={Logo} alt="Logo" />
+      <Button variant="contained">Hello CHESS</Button>
+      <IconButton>
+        <AddRoadIcon />
+      </IconButton>
     </div>
   );
 };
