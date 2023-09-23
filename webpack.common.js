@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
@@ -73,6 +74,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "build.[contenthash].css",
     }),
+    new webpack.ProvidePlugin({
+      React: "react",
+    }),
+    // new webpack.SourceMapDevToolPlugin({}),
   ],
   optimization: {
     minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
