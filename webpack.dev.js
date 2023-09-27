@@ -10,6 +10,7 @@ module.exports = merge(commonConfig, {
     path: path.resolve(__dirname, "build"),
     clean: true,
     assetModuleFilename: "assets/[hash][ext][query]",
+    publicPath: "/",
   },
   devServer: {
     static: {
@@ -17,5 +18,6 @@ module.exports = merge(commonConfig, {
     },
     compress: true,
     port: 8080,
+    historyApiFallback: true,
   },
 });
