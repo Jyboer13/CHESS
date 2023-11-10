@@ -10,7 +10,7 @@ module.exports = merge(commonConfig, {
     path: path.resolve(__dirname, "build"),
     clean: true,
     assetModuleFilename: "assets/[hash][ext][query]",
-    publicPath: "/",
+    publicPath: "auto",
   },
   devServer: {
     static: {

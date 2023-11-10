@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+
 module.exports = {
   entry: "./src/index.tsx",
   module: {
@@ -76,6 +78,23 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       React: "react",
+    }),
+    new ModuleFederationPlugin({
+      name: "ChessModule",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./ChessModule": "./src/app",
+      },
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: "*"
+        },
+        "react-dom": {
+          singleton: true,
+          requiredVersion: "*"
+        }
+      }
     }),
     // new webpack.SourceMapDevToolPlugin({}),
   ],
